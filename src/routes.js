@@ -4,9 +4,19 @@ const SearchController = require("./controllers/SearchControllers");
 
 const routes = Router();
 
-routes.get("/devs", DevController.index);
-routes.post("/devs", DevController.store);
+routes.get("/devs", auth, DevController.index);
+routes.post("/devs", auth, DevController.store);
 
-routes.get("/search", SearchController.index);
+routes.get("/search", auth, SearchController.index);
+
+function auth(req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+
+  next();
+}
 
 module.exports = routes;
