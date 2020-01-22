@@ -22,12 +22,11 @@ mongoose.connect(
 app.use(
   cors({
     origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
   })
 );
 app.use(express.json());
 app.use(routes);
 
-server.listen(4000, () => {
+server.listen(80, () => {
   console.log("Rodando");
 });
