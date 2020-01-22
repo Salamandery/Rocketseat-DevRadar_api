@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const routes = require('./src/routes');
-const { setupWebsocket } = require('./websocket');
-const http = require('http');
+const routes = require("./src/routes");
+const { setupWebsocket } = require("./websocket");
+const http = require("http");
 const cors = require("cors");
 
 const app = express();
@@ -19,7 +19,13 @@ mongoose.connect(
   }
 );
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true
+  })
+);
 app.use(express.json());
 app.use(routes);
 
