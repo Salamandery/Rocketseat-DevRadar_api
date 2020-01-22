@@ -28,6 +28,6 @@ app.use(
 app.use(express.json());
 app.use(routes);
 
-server.listen(3333, () => {
+server.listen(80, () => {
   console.log("Rodando");
 });
